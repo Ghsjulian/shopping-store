@@ -56,6 +56,42 @@
 
 ---
 
+
+<h3>API END POINTS : </h3>
+
+
+```
+[1] Get All Registered Users
+[+] Method : GET
+[+] /api/admin/users
+
+[2] Get All Added Products
+[+] Method : GET
+[+] /api/admin/all-products
+
+[3] Get One Product By ID
+[+] Method : GET
+[+] /api/admin/get-product/:id
+
+[4] User Registration System
+[+] Method : POST
+[+] /api/signup
+
+[5] User Login System 
+[+] Method : POST
+[+] /api/login
+
+[6] Add Product
+[+] Method : POST
+[+] /api/admin/add-product
+
+[6] Edit/Update Product
+[+] Method : PUT
+[+] /api/admin/update-product
+
+```
+
+
 <h3>SCREENSHOT AND DEMO : </h3>
 <br><br>
 
