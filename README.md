@@ -1,24 +1,19 @@
 <center>
 
 <center>
-<img align="center" src="src/assets/images/myLogo2.png" width="250" height="250"><br>
+<img align="center" src="frontend/public/favicons/android-chrome-192x192.png" width="250" height="250"><br>
 <h2 align="center">Ghs Julian</h2>
 </center>
 
-
-
-
 </center>
 
-
 <br><br>
-<h3>Bak-Agency</h3>
 
+<h3>Shopping Store</h3>
+<h4>Mern Stack Website </h4>
 ---
 
-**This is a static Bak-Agency Demo created by Ghs Julian
- I'll implement the react single page feture after the UI completely deigned. The website will be a dynamic with admin dashboard. After making this I'll add more advance features ! but right now it's
- enough , no worry's.**
+**This is mern stack e commerce website, i have created this project using my android phone. It is fully responsive and user friendly , everything work very well. I will host it on free server like (Vercel, Netlify Or Render). Let's see the the functionalities of this website**
 
 ---
 
@@ -26,7 +21,7 @@
 
 ---
 
-<a href="https://bakdif.com" target="_blank"> Clik Here</a>
+<a href="#" target="_blank"> Clik Here</a>
 
 ---
 
@@ -35,10 +30,9 @@
 
 ---
 
-<a href="https://github.com/Ghsjulian/bak-agency.git" target="_blank"> Clik Here</a>
+<a href="https://github.com/Ghsjulian/shopping-store.git" target="_blank"> Clik Here</a>
 
 ---
-
 
 <br><br>
 
@@ -50,8 +44,16 @@
 2. CSS3
 3. JAVASCRIPT
 4. PNG/IMAGES
-5. ANIMATIONS 
-6. PHP
+5. ANIMATIONS
+6. React(Front-End UI)
+7. React (Carousel, Axios, React Router DOM)
+8. React (Redux,Reducer,Context API)
+9. Nodejs
+10. Express
+11. MongoDB 
+12. BcryptJS
+13. JSON Web Token (JWT)
+
 ---
 
 <h3>SCREENSHOT AND DEMO : </h3>
@@ -71,8 +73,8 @@
 
 ---
 
-
 <br><br>
+
 <center>
 <h2> Thank You !!! </h2>
 </center>
