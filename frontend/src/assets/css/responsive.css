@@ -1,0 +1,59 @@
+/*  CSS RESPONSIVE MEDIA QUERY  FOR MOBILE  DEVICE  */
+@media (max-width: 768px) {
+    aside {
+        left: -20%;
+    }
+    header,
+    footer,
+    main {
+        left: 0;
+        width: 100%;
+    }
+    header {
+        padding: 0.5rem;
+        height: 50px;
+    }
+    header .logo {
+        font-size: 20px;
+    }
+    header button,
+    header .nav-btn {
+        display: block;
+    }
+    aside .search-area {
+        display: flex;
+    }
+    header .links {
+        display: none;
+    }
+    footer {
+        flex-direction: column;
+    }
+    .hero {
+        height: 60vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .slide-title h3 {
+        font-size: 23px;
+    }
+    .slide-title p {
+        font-size: 16;
+        width: 100%;
+    }
+    /* Latest Product Creating */
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(auto, 1fr));
+    }
+    .grid .col .btn-area {
+        gap: 2rem;
+    }
+    .grid .col .btn-area a span {
+        /* display: none; */
+    }
+    .grid .col .btn-area a i {
+        font-size: 22px;
+    }
+}
