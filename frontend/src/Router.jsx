@@ -2,6 +2,8 @@
 import Layouts from "./layouts/Layouts";
 import Home from "./pages/Home";
 import NotFound from "./components/404";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 const MyRoutes = [
     {
@@ -13,6 +15,14 @@ const MyRoutes = [
                 element: <Home />
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/signup",
+        element: <Signup />
     },
     {
         path: "*",

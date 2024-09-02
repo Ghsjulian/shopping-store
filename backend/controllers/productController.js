@@ -82,7 +82,9 @@ class productController {
                     throw new Error("Error Adding Product!");
                 }
             } catch (error) {
-                await productController.deleteFile("./public/products/" + productImg);
+                await productController.deleteFile(
+                    "./public/products/" + productImg
+                );
                 res.status(403).json({
                     code: 403,
                     type: false,
@@ -95,14 +97,51 @@ class productController {
     async updateProduct(req, res) {
         const id = req.params.id;
         const data = JSON.parse(req.body.data);
-        const productImg = req.file.filename;
-        console.log(productImg);
-        console.log(id);
-        await productController.deleteFile("./public/products/" + productImg);
-        res.json({ data });
-        // const product_obj = data.product_desc;
-        // const category = data.product_category;
-        // const title = data.product_title;
+        var productImg = "";
+        const isImg = req.body.isImage === "YES" ? true : false;
+        const oldImg = "req.body.img";
+        const product_desc = data.product_desc;
+        const product_category = data.product_category;
+        const product_title = data.product_title;
+        if (isImg) {
+            productImg = req.file.filename;
+        }
+        const obj = {
+            product_desc,
+            product_category,
+            product_title,
+            product_img: isImg ? host + "/products/" + productImg : oldImg
+        };
+        try {
+            const update = await Product.findByIdAndUpdate(id, obj);
+            if (update) {
+                if (isImg) {
+                    let parts = oldImg.split("/");
+                    let partsImg = parts[parts.length - 1];
+                    await productController.deleteFile(
+                        "./public/products/" + partsImg
+                    );
+                }
+                res.status(200).json({
+                    code: 200,
+                    type: true,
+                    status: "success",
+                    success: "Product Updated Successfully !"
+                });
+            } else {
+                throw new Error("Product Updated Failed !");
+            }
+        } catch (error) {
+            await productController.deleteFile(
+                "./public/products/" + productImg
+            );
+            res.status(500).json({
+                code: 500,
+                type: false,
+                status: "error",
+                error: error.message
+            });
+        }
     }
 }
 

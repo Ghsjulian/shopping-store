@@ -2,6 +2,8 @@ const User = require("../models/user");
 const dotenv = require("dotenv").config("../.env");
 const auth = require("../auth");
 const host = process.env.HOST;
+const domain = process.env.DOMAIN;
+
 /*------------------------------------------*/
 // Creating User Class For Maintaing Users
 class userController {
@@ -47,7 +49,7 @@ class userController {
                 throw new Error("User Already Registered !");
             } else {
                 const encPassword = await auth.makeHash(password);
-                const date = new Date();
+                var date = new Date();
                 const today = date.toDateString();
                 const token = await auth.encodeJWT({
                     username,
@@ -66,6 +68,10 @@ class userController {
                 if (save) {
                     const currentUser = await User.findOne({
                         user_email: email
+                    });
+                    date.setDate(date.getDate() + 30);
+                    res.cookie("user", token, {
+                        expires: date
                     });
                     return res.status(201).json({
                         code: 201,
@@ -126,7 +132,7 @@ class userController {
                         isExist.user_password
                     );
                     if (isOkPassword) {
-                        const date = new Date();
+                        var date = new Date();
                         const today = date.toDateString();
                         const username = isExist.username;
                         const token = await auth.encodeJWT({
@@ -139,11 +145,17 @@ class userController {
                             { user_token: token }
                         );
                         if (update) {
+                            var d = new Date();
+                            d.setDate(d.getDate() + 30);
+                            res.cookie("user", token, {
+                                expires: d
+                            });
+
                             return res.status(200).json({
                                 code: 200,
                                 type: true,
                                 userID: isExist._id,
-                                token: token,
+                                token,
                                 date: today,
                                 status: "success",
                                 success: "User Logged In Successfully"
@@ -178,7 +190,7 @@ class userController {
         try {
             const users = await User.find();
             if (users) {
-                res.json(users );
+                res.json(users);
             } else {
                 throw new Error("No User Found !");
             }

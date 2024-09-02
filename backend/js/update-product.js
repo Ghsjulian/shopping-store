@@ -15,6 +15,7 @@ const updatProduct = async () => {
     const url =
         "http://localhost:5000/api/admin/update-product/66d484e8589347cefc10b955";
     const data = {
+        isImg: "YES",
         product_title: "Product Title",
         product_desc: {
             width: "120X120",
