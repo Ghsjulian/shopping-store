@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../assets/css/login.css";
-import { setCookie } from "../Cookies";
+import { setCookie, getCookie, isAdmin } from "../Cookies";
 
 const Login = () => {
+    const cookie = getCookie("user");
+    const navigate = useNavigate();
     document.title = "Login To Your Account | Shopping Cart E Commerce";
     const host = import.meta.env.VITE_API_URL;
-    const navigate = useNavigate();
     const msgRef = useRef(null);
     const loaderRef = useRef(null);
     const [isLoading, setLoading] = useState(false);
@@ -64,7 +65,18 @@ const Login = () => {
                     showMessage(true, response.success);
                     /* If the user is admin then
                     redirect to admin dashboard*/
-                    await setCookie("user", response.token);
+                    const cookie = {
+                        id: response.userID,
+                        user_type: response.user_type,
+                        token: response.token,
+                        date: response.today
+                    };
+                    await setCookie("user", JSON.stringify(cookie));
+                    if (response.user_type === "Admin") {
+                        navigate("/admin");
+                    } else {
+                        navigate("/");
+                    }
                 } else {
                     msgRef.current.classList.remove("success");
                     msgRef.current.classList.add("error");

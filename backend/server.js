@@ -17,7 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*" }));
 app.use(cookieParser());
-
 /*------------------------------------------*/
 // Imported The Router Here
 // Defined The API Endpoints Path
@@ -47,4 +46,4 @@ mongoose
         console.clear();
         console.log(error);
     });
-module.exports = app
+module.exports = app;

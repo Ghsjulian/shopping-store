@@ -29,27 +29,21 @@ export const getCookie = cname => {
     return "";
 };
 
-
-
-/*
 export const getInfo = () => {
-    const data = getCookie("e-comUser") ? getCookie("e-comUser") : null;
+    const data = getCookie("user") ? getCookie("user") : null;
     const cookies = JSON.parse(data);
     if (cookies) {
         return cookies;
     } else {
-        return {
-            token: false,
-            userId: false
-        };
+        return null;
     }
-}
+};
+
 export const isAdmin = () => {
-       const info = getInfo()
-        if (info.userId === adminID) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-*/
+    const info = getInfo();
+    if (info.id=== adminID) {
+        return true;
+    } else {
+        return false;
+    }
+};

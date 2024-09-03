@@ -69,14 +69,11 @@ class userController {
                     const currentUser = await User.findOne({
                         user_email: email
                     });
-                    date.setDate(date.getDate() + 30);
-                    res.cookie("user", token, {
-                        expires: date
-                    });
                     return res.status(201).json({
                         code: 201,
                         userID: currentUser._id,
                         token,
+                        user_type: "User",
                         date: today,
                         type: true,
                         status: "success",
@@ -135,6 +132,8 @@ class userController {
                         var date = new Date();
                         const today = date.toDateString();
                         const username = isExist.username;
+                         const id = isExist._id;
+                         const u_type = isExist.user_type;
                         const token = await auth.encodeJWT({
                             username,
                             email,
@@ -145,16 +144,11 @@ class userController {
                             { user_token: token }
                         );
                         if (update) {
-                            var d = new Date();
-                            d.setDate(d.getDate() + 30);
-                            res.cookie("user", token, {
-                                expires: d
-                            });
-
                             return res.status(200).json({
                                 code: 200,
                                 type: true,
-                                userID: isExist._id,
+                                userID: id,
+                                 user_type: u_type,
                                 token,
                                 date: today,
                                 status: "success",

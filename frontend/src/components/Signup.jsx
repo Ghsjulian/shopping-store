@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../assets/css/login.css";
+import { setCookie } from "../Cookies";
 
 const Signup = () => {
     document.title =
@@ -31,22 +32,22 @@ const Signup = () => {
     const signup = async e => {
         e.preventDefault();
         if (!username.trim() && !email.trim() && !password.trim()) {
-             msgRef.current.classList.remove("success");
+            msgRef.current.classList.remove("success");
             msgRef.current.classList.add("error");
             showMessage(false, "Please Enter Your Information!");
             return;
         } else if (!username.trim()) {
-             msgRef.current.classList.remove("success");
+            msgRef.current.classList.remove("success");
             msgRef.current.classList.add("error");
             showMessage(false, "Please Enter User Name!");
             return;
         } else if (!email.trim()) {
-             msgRef.current.classList.remove("success");
+            msgRef.current.classList.remove("success");
             msgRef.current.classList.add("error");
             showMessage(false, "Please Enter User Email Address!");
             return;
         } else if (!password.trim()) {
-             msgRef.current.classList.remove("success");
+            msgRef.current.classList.remove("success");
             msgRef.current.classList.add("error");
             showMessage(false, "Please Enter User Password!");
             return;
@@ -66,17 +67,25 @@ const Signup = () => {
                 const response = await sendData.json();
                 setLoading(false);
                 if (response.type) {
-                     msgRef.current.classList.remove("error");
+                    msgRef.current.classList.remove("error");
                     msgRef.current.classList.add("success");
                     showMessage(true, response.success);
+                    const cookie = JSON.stringify({
+                        id: response.userID,
+                        user_type: response.user_type,
+                        token: response.token,
+                        date: response.today
+                    });
+                    await setCookie("user", cookie);
+                     navigate("/")
                 } else {
-                     msgRef.current.classList.remove("success");
+                    msgRef.current.classList.remove("success");
                     msgRef.current.classList.add("error");
                     showMessage(false, response.error);
                 }
             } catch (error) {
                 setLoading(false);
-                 msgRef.current.classList.remove("success");
+                msgRef.current.classList.remove("success");
                 msgRef.current.classList.add("error");
                 showMessage(false, error.message);
             }
