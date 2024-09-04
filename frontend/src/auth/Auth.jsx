@@ -16,3 +16,10 @@ export const Islogin = ({ children }) => {
     }, [cookie]);
     return !cookie && cookie !== null && children;
 };
+export const getCurrency =(type,price)=>{
+    if(type==="encode") {
+        return price+"TK BDT"
+    }else {
+        return price
+    }
+}

@@ -143,6 +143,29 @@ class productController {
             });
         }
     }
+    async deleteProduct(req,res){
+        try {          
+        const products = await Product.deleteOne({ _id: req.params.id });
+        if(products){
+        return res.status(200).json({
+            code: 200,
+            products,
+            type: true,
+            status: "success",
+            success: "Everything Is okay"
+        });
+        }else{
+            throw new Error("Product Not Deleted")
+        }
+        } catch (error) {
+            return res.status(403).json({
+            code: 403,
+            type: true,
+            status: "faild",
+            error: error.message
+        });
+        }
+    }
 }
 
 /*------------------------------------------*/

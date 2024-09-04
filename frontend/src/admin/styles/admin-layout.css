@@ -1,0 +1,259 @@
+:root {
+    --white: #ffffff;
+    --txt: #555c5b;
+    --icon: #0098bd;
+    --error: #e13f05;
+    --error-bg: rgba(221, 54, 10, 0.125);
+    --success: #00ad18;
+    --success-bg: rgba(25, 221, 10, 0.125);
+}
+.admin-col {
+    padding: 2.5rem 1rem;
+    height: 100%;
+}
+.admin-col i {
+    font-weight: 300;
+    font-size: 4rem;
+    color: var(--icon);
+}
+
+/* Signup Styling */
+.one-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    margin: 1rem 0.5rem;
+}
+.signup-form {
+    max-width: 500px;
+    width: 90%;
+    height: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow:
+        2px 2px 4px #c7c7c7,
+        -2px -2px 4px #c7c7c7;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem auto;
+    display: flex;
+    flex-direction: column;
+}
+.signup-form label {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0.3rem auto;
+    padding: 0.5rem 0.7rem;
+    border: 0.8px solid var(--txt);
+    border-radius: 5px;
+}
+.signup-form label i {
+    color: var(--txt);
+    font-size: 2.3rem;
+    margin: 0 0.4rem;
+}
+.signup-form img {
+    width: 90%;
+    height: 180px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+.signup-form #message {
+    width: 90%;
+    margin: 0.3rem auto;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.signup-form h3 {
+    color: #525252;
+}
+
+.error {
+    color: var(--error);
+    border: 0.1px solid var(--error);
+    background: var(--error-bg);
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.success {
+    color: var(--success);
+    border: 0.1px solid var(--success);
+    background: var(--success-bg);
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.signup-form input {
+    width: 90%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--txt);
+    color: var(--icon);
+    font-weight: 600;
+    padding: 1rem 0.8rem;
+    margin: 0.7rem auto;
+}
+.signup-form textarea {
+    width: 90%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--txt);
+    color: var(--icon);
+    font-weight: 600;
+    font-family: Sans-Serif;
+    height: 100px;
+    padding: 1rem 0.8rem;
+    margin: 0.7rem auto;
+}
+input:focus {
+    border: 1px solid var(--icon);
+}
+.signup-form strong {
+    color: var(--txt);
+    font-weight: 500;
+    margin: 0.3rem auto;
+}
+.signup-form strong a {
+    text-decoration: none;
+    color: #0026d4;
+}
+.signup-form select {
+    outline: none;
+    border-radius: 10px;
+    border: 1.5px solid #007fbd;
+    color: #007fbd;
+    font-weight: 600;
+    padding: 0.6rem 0.3rem;
+    margin: 0.5rem auto;
+    background: transparent;
+}
+
+.signup-form .submit {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #006876;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.6rem 1rem;
+    margin: 0.5rem auto;
+    transition: 0.4s ease-in;
+}
+.submit:hover {
+    background: var(--icon);
+}
+
+.all-products {
+    display: flex;
+    background: var(--white);
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 800px;
+    width: 95%;
+    height: 100%;
+    padding: 1rem 0.8rem;
+    margin: 1rem auto;
+}
+.all-products .product-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.all-products .product-list {
+    width: 100%;
+    height: 100%;
+    max-width: 550px;
+    margin: 0.5rem auto;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    border-top: 2px solid #d3d3d3;
+}
+.product-list .cart-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    gap: 0.5rem;
+    text-align: left;
+}
+.cart-col img {
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    padding: 0.1rem;
+    border: 0.1px solid var(--txt);
+}
+.cart-col .price-col {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin: 0 0;
+    padding: 0;
+    text-align: left;
+}
+.price-col span {
+    color: var(--txt);
+    margin: 0.2rem 0;
+}
+.cart-col #action-btn {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    margin: 0.3rem 0;
+    padding: 0;
+}
+#action-btn button {
+    outline: none;
+    cursor: pointer;
+    color: var(--white);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.5rem;
+    transition: 0.3s ease-in;
+    border: 0.5px solid var(--white);
+    font-weight: 600;
+}
+#action-btn button i {
+    font-size: 18px;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+#action-btn button i:hover {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+#action-btn #edit {
+    background: var(--icon);
+    color: var(--white);
+}
+#action-btn #remove {
+    margin-left: 1rem;
+    background: var(--error);
+    color: var(--white);
+}
+
+#action-btn #edit:hover {
+    background: transparent;
+    border: 0.5px solid var(--icon);
+    color: var(--icon);
+}
+
+#action-btn #remove:hover {
+    background: transparent;
+    border: 0.5px solid var(--error);
+    color: var(--error);
+}

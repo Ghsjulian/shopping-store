@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import SidebarLinks from "./SidebarLinks";
+import { getInfo,isAdmin } from "../Cookies";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Header = () => {
         setOpen(!isOpen);
     };
     const closeNav = () => {
+        sideRef.current.classList.remove("mobile-menu")
         setOpen(false);
     };
     const goToHome = () => {
@@ -21,8 +23,8 @@ const Header = () => {
     return (
         <>
             <header>
-                <h3 className="logo">
-                <i className="bx bxl-shopify"></i>
+                <h3 onClick={goToHome} className="logo">
+                    <i className="bx bxl-shopify"></i>
                     Shopping-<span>Store</span>
                 </h3>
                 <div className="links">
@@ -30,15 +32,21 @@ const Header = () => {
                         <input type="search" placeholder="Search..." />
                         <i className="bx bx-search"></i>
                     </div>
-                    <NavLink to="/">
-                        <i className="bx bx-bell"></i>
-                    </NavLink>
-                    <NavLink to="/">
-                        <i className="bx bx-cart"></i>
-                    </NavLink>
-                    <NavLink to="/">
-                        <i className="bx bx-user-circle"></i>
-                    </NavLink>
+                    {getInfo() !== null && (
+                        <>
+                            <NavLink to="/">
+                                <i className="bx bx-bell"></i>
+                            </NavLink>
+                            {!isAdmin&&
+                            <NavLink to="/">
+                                <i className="bx bx-cart"></i>
+                            </NavLink>
+}
+                            <NavLink to="/">
+                                <i className="bx bx-user-circle"></i>
+                            </NavLink>
+                        </>
+                    )}
                 </div>
                 <button onClick={openMenu} className="nav-btn">
                     <i className={isOpen ? "bx bx-x" : "bx bx-menu"}></i>
@@ -50,7 +58,7 @@ const Header = () => {
                     <input type="search" placeholder="Search..." />
                     <i className="bx bx-search"></i>
                 </div>
-                <SidebarLinks />
+                <SidebarLinks closeNav={closeNav} />
             </aside>
         </>
     );

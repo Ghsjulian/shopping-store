@@ -15,17 +15,19 @@ router.post("/signup", userController.userSignup);
 router.post("/login", userController.userLogin);
 /*------------------------------------------*/
 // Product Routes Here...
-router.get("/admin/all-products", productController.getAllProducts);
-router.get("/admin/get-product/:id", productController.getProduct); //id = 66d484e8589347cefc10b955
+router.get("/products/all-products", productController.getAllProducts);
+router.get("/products/get-product/:id", productController.getProduct); //id = 66d484e8589347cefc10b955
 router.post(
-    "/admin/add-product",
+    "/admin/products/add-product",
     upload.single("file"),
     productController.addProduct
 );
 router.put(
-    "/admin/update-product/:id",
+    "/admin/products/update-product/:id",
     upload.single("file"),
     productController.updateProduct
 ); // id= 66d484e8589347cefc10b955
+router.delete("/admin/products/delete-product/:id",productController.deleteProduct);
+
 // Exported The Router Here...
 module.exports = router;

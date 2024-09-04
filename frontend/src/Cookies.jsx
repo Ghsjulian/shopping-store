@@ -35,7 +35,12 @@ export const getInfo = () => {
     if (cookies) {
         return cookies;
     } else {
-        return null;
+        return {
+            id : null,
+            token : null,
+            date: null,
+            user_type : null,
+        };
     }
 };
 

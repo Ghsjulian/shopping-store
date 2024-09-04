@@ -5,9 +5,7 @@
     height: 100%;
     overflow-x: hidden;
 }
-Carousel {
-    overflow-y: auto;
-}
+
 .slide {
     position: absolute;
     top: 0;
@@ -123,7 +121,7 @@ Carousel {
 
 /* Latest Product Sections Creating */
 .page {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
 }
 .page .heading {
     text-align: center;
@@ -184,3 +182,4 @@ Carousel {
     border: 1px solid var(--product-btn);
     color: var(--product-btn);
 }
+/* Profile Components Stylin6 */ 

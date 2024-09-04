@@ -47,6 +47,10 @@
         grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
         grid-template-rows: repeat(auto-fill, minmax(auto, 1fr));
     }
+    .admin-row {
+        grid-template-columns: repeat(auto-fill, minmax(46%, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(auto, 1fr));
+    }
     .grid .col .btn-area {
         gap: 2rem;
     }
@@ -55,5 +59,27 @@
     }
     .grid .col .btn-area a i {
         font-size: 22px;
+    }
+    .all-products .product-list {
+        flex-direction: column;
+        align-items: left;
+        text-align: justify;
+        margin: 0.5rem 0;
+        padding: 0.3rem 0;
+        width: 100%;
+    }
+    .all-products .product-list .cart-col {
+        text-align: justify;
+        align-items: center;
+        justify-content: left;
+        margin: 0;
+        padding: 0;
+    }
+    .cart-col span {
+        margin: 0.3rem 0;
+    }
+    .all-products .product-list .cart-col img {
+        height: 130px;
+        margin: 0;
     }
 }
