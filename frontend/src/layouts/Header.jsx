@@ -37,7 +37,7 @@ const Header = () => {
                             <NavLink to="/">
                                 <i className="bx bx-bell"></i>
                             </NavLink>
-                            {!isAdmin&&
+                            {!isAdmin()&&
                             <NavLink to="/">
                                 <i className="bx bx-cart"></i>
                             </NavLink>

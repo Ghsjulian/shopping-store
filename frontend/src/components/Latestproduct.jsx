@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { getCurrency } from "../auth/Auth";
+import ProductLoader from "./ProductLoader";
 
 const Latestproduct = () => {
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
     const [products, setProducts] = useState([]);
     const [isProducts, setIsProducts] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
-
+    const [isLoading, setIsLoading] = useState(false);
     const fetchProduct = async () => {
         try {
             setIsLoading(true);
@@ -22,6 +22,7 @@ const Latestproduct = () => {
                 console.log("No Products Found");
             }
         } catch (error) {
+            setIsProducts(true);
             console.log(error);
         }
     };
@@ -30,12 +31,13 @@ const Latestproduct = () => {
         if (isLoading) {
             return;
         }
-    }, [isLoading]);
+    }, []);
 
     return (
         <section className="page">
             <h2 className="heading">Our Latest Products</h2>
             <div className="grid" id="products">
+                {isLoading && <ProductLoader />}
                 {products.length > 0 &&
                     products.map((product, index) => {
                         return (
@@ -45,7 +47,7 @@ const Latestproduct = () => {
                                     alt="Product Image"
                                 />
                                 <span className="price">
-                                    Price : 
+                                    Price :
                                     {getCurrency(
                                         "encode",
                                         product.product_desc.price
