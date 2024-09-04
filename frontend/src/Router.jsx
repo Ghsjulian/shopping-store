@@ -6,6 +6,7 @@ import NotFound from "./components/404";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
+import Latestproduct from "./components/Latestproduct"
 /* Import Admin Routes Here */
 import Dashboard from "./admin/components/Dashboard";
 import AddProduct from "./admin/components/AddProduct";
@@ -21,12 +22,16 @@ const MyRoutes = [
                 element: <Home />
             },
             {
+        path: "/latest-product",
+        element: <Latestproduct />
+    },
+            {
                 path: "/profile",
                 element: <Profile />
             },
             /*Admin Routes Here */
             {
-                path: "/admin",
+                path: "/admin/dashboard",
                 element: <Dashboard />
             },
             {
@@ -38,7 +43,7 @@ const MyRoutes = [
                 element: <EditProduct />
             },
             {
-                path: "/admin/all-product",
+                path: "/admin/all-products",
                 element: <AllProducts />
             }
         ]

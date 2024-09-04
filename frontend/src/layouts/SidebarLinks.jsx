@@ -31,7 +31,7 @@ const SidebarLinks = ({ closeNav }) => {
                     </NavLink>
                     <NavLink
                         onClick={closeNav}
-                        to="/profile"
+                        to="/admin/profile"
                         className={path == "/profile" ? "active" : ""}
                     >
                         <i className="bx bx-shield"></i>
@@ -55,8 +55,10 @@ const SidebarLinks = ({ closeNav }) => {
                     </NavLink>
                     <NavLink
                         onClick={closeNav}
-                        to="/admin/products"
-                        className={path == "/admin/products" ? "active" : ""}
+                        to="/admin/all-products"
+                        className={
+                            path == "/admin/all-products" ? "active" : ""
+                        }
                     >
                         <i className="bx bx-task"></i>
                         All Products
@@ -108,8 +110,8 @@ const SidebarLinks = ({ closeNav }) => {
             )}
             <NavLink
                 onClick={closeNav}
-                className={path == "/latest-products" ? "active" : ""}
-                to="/latest-products"
+                className={path == "/latest-product" ? "active" : ""}
+                to="/latest-product"
             >
                 <i className="bx bx-closet"></i> <span>Latest Products</span>
             </NavLink>

@@ -148,8 +148,8 @@
 }
 .grid .col img {
     width: 100%;
-    height: 100%;
-    object-fit: fill;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
     filter: contrast(100%);
 }
@@ -182,4 +182,4 @@
     border: 1px solid var(--product-btn);
     color: var(--product-btn);
 }
-/* Profile Components Stylin6 */ 
+/* Profile Components Stylin6 */

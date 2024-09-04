@@ -4,16 +4,17 @@ import axios from "axios";
 import "../styles/admin-layout.css";
 
 const EditProduct = () => {
-    document.title = "Add New Product - Shopping Cart";
+    document.title = "Update Product - Shopping Cart";
     const param = useParams();
     const [isProducts, setIsProducts] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
-    const apiUrl = import.meta.env.VITE_API_URL;
+    const host = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     const messageRef = useRef(null);
     const btnRef = useRef(null);
     const [file, setFile] = useState(null);
     const [fileData, setFileDataURL] = useState(null);
+    const [isImg, setImg] = useState(false);
     const [desc, setDesc] = useState("");
     const initialProduct = {
         product_title: "",
@@ -52,7 +53,7 @@ const EditProduct = () => {
         try {
             setIsLoading(true);
             const response = await axios.get(
-                `${apiUrl}/products/get-product/${param.id}`
+                `${host}/products/get-product/${param.id}`
             );
             if (response.data) {
                 setProduct(response.data);
@@ -84,6 +85,7 @@ const EditProduct = () => {
                 const { result } = e.target;
                 if (result && !isCancel) {
                     setFileDataURL(result);
+                    setImg(true);
                 }
             };
             fileReader.readAsDataURL(file);
@@ -96,15 +98,59 @@ const EditProduct = () => {
         };
     }, [file]);
 
-
-const UpdateProduct = async ()=>{
-   if(products.product_title && products.product_category && desc) {
-       alert(JSON.stringify(products))
-   }
-}
-
-
-
+    const UpdateProduct = async () => {
+        if (
+            fileData &&
+            products.product_title &&
+            products.product_category &&
+            desc
+        ) {
+            const productObj = {
+                product_title: products.product_title,
+                product_desc: createObject(desc),
+                isImg,
+                oldImg: products.product_img,
+                product_obj: createObject(desc),
+                product_category: products.product_category
+            };
+            const formData = new FormData();
+            if (isImg) {
+                formData.append("file", file);
+            }
+            formData.append("data", JSON.stringify(productObj));
+            try {
+                btnRef.current.textContent = "Processing...";
+                const sendData = await fetch(
+                    host + "/admin/products/update-product/" + param.id,
+                    {
+                        method: "PUT",
+                        //  headers: { "Content-Type": "multipart/form-data" },
+                        body: formData // JSON.stringify(data)
+                    }
+                );
+                const response = await sendData.json();
+                btnRef.current.textContent = "Add Product";
+                if (response.type) {
+                    messageRef.current.classList.add("success");
+                    messageRef.current.textContent = response.success;
+                    navigate("/admin/all-products");
+                } else {
+                    messageRef.current.classList.add("error");
+                    messageRef.current.textContent = response.error;
+                }
+            } catch (error) {
+                messageRef.current.classList.add("error");
+                messageRef.current.textContent = error;
+            }
+        } else {
+            messageRef.current.classList.add("error");
+            messageRef.current.textContent = "All Fields Are Required";
+        }
+        setTimeout(() => {
+            messageRef.current.classList.remove("error");
+            messageRef.current.textContent = "";
+        }, 3000);
+    };
 
     return (
         <section className="page">
@@ -146,9 +192,7 @@ const UpdateProduct = async ()=>{
                     }}
                     value={desc}
                 ></textarea>
-                <button ref={btnRef} 
-                onClick={UpdateProduct}
-                className="submit">
+                <button ref={btnRef} onClick={UpdateProduct} className="submit">
                     Update Product
                 </button>
             </div>

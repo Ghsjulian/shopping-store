@@ -51,17 +51,20 @@ const AddProduct = () => {
             formData.append("data", JSON.stringify(products));
             try {
                 btnRef.current.textContent = "Processing...";
-                const sendData = await fetch(host + "/admin/products/add-product", {
-                    method: "POST",
-                    //  headers: { "Content-Type": "multipart/form-data" },
-                    body: formData // JSON.stringify(data)
-                });
+                const sendData = await fetch(
+                    host + "/admin/products/add-product",
+                    {
+                        method: "POST",
+                        //  headers: { "Content-Type": "multipart/form-data" },
+                        body: formData // JSON.stringify(data)
+                    }
+                );
                 const response = await sendData.json();
                 btnRef.current.textContent = "Add Product";
                 if (response.type) {
                     messageRef.current.classList.add("success");
                     messageRef.current.textContent = response.success;
-                    navigate("/admin/products");
+                    navigate("/admin/all-products");
                 } else {
                     messageRef.current.classList.add("error");
                     messageRef.current.textContent = response.error;

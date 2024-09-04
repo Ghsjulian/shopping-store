@@ -73,7 +73,7 @@ const Login = () => {
                     };
                     await setCookie("user", JSON.stringify(cookie));
                     if (response.user_type === "Admin") {
-                        navigate("/admin");
+                        navigate("/admin/dashboard");
                     } else {
                         navigate("/");
                     }

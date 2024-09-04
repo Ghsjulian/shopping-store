@@ -70,7 +70,7 @@ const AllProducts = () => {
                     products.map((product, index) => {
                         return (
                             <>
-                                <div className="product-list" key={index + 2}>
+                                <div className="product-list" key={product._id+ 2}>
                                     <div id="cart-col" className="cart-col">
                                         <img
                                             src={product.product_img}
