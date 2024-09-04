@@ -66,7 +66,7 @@ const SidebarLinks = ({ closeNav }) => {
                 </>
             )}
 
-            {getInfo().token !== null && !isAdmin && (
+            {getInfo().token !== null && !isAdmin() && (
                 <>
                     <NavLink
                         onClick={closeNav}

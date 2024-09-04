@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Latestproduct from "./components/Latestproduct"
+import Cart from "./components/Cart"
 /* Import Admin Routes Here */
 import Dashboard from "./admin/components/Dashboard";
 import AddProduct from "./admin/components/AddProduct";
@@ -28,6 +29,10 @@ const MyRoutes = [
             {
                 path: "/profile",
                 element: <Profile />
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             },
             /*Admin Routes Here */
             {

@@ -1,7 +1,7 @@
 :root {
     --white: #ffffff;
     --txt: #555c5b;
-    --icon: #0098bd;
+    --blue: #0098bd;
     --error: #e13f05;
     --error-bg: rgba(221, 54, 10, 0.125);
     --success: #00ad18;
@@ -14,7 +14,7 @@
 .admin-col i {
     font-weight: 300;
     font-size: 4rem;
-    color: var(--icon);
+    color: var(--blue);
 }
 
 /* Signup Styling */
@@ -93,7 +93,7 @@
     outline: none;
     border-radius: 5px;
     border: 1px solid var(--txt);
-    color: var(--icon);
+    color: var(--blue);
     font-weight: 600;
     padding: 1rem 0.8rem;
     margin: 0.7rem auto;
@@ -103,7 +103,7 @@
     outline: none;
     border-radius: 5px;
     border: 1px solid var(--txt);
-    color: var(--icon);
+    color: var(--blue);
     font-weight: 600;
     font-family: Sans-Serif;
     height: 100px;
@@ -111,7 +111,7 @@
     margin: 0.7rem auto;
 }
 input:focus {
-    border: 1px solid var(--icon);
+    border: 1px solid var(--blue);
 }
 .signup-form strong {
     color: var(--txt);
@@ -145,7 +145,7 @@ input:focus {
     transition: 0.4s ease-in;
 }
 .submit:hover {
-    background: var(--icon);
+    background: var(--blue);
 }
 
 .all-products {
@@ -201,8 +201,9 @@ input:focus {
     text-align: left;
 }
 .price-col span {
+    font-family: "Sans-Serif", ghs;
     color: var(--txt);
-    margin: 0.2rem 0;
+    margin: 0.1rem 0;
 }
 .cart-col #action-btn {
     display: flex;
@@ -237,7 +238,7 @@ input:focus {
     border: none;
 }
 #action-btn #edit {
-    background: var(--icon);
+    background: var(--blue);
     color: var(--white);
 }
 #action-btn #remove {
@@ -245,15 +246,28 @@ input:focus {
     background: var(--error);
     color: var(--white);
 }
+#action-btn #btn {
+    font-size: 18px;
+    padding: 0.2rem 1.5rem;
+    margin-right: 1rem;
+    background: var(--txt);
+    color: var(--white);
+}
 
 #action-btn #edit:hover {
     background: transparent;
-    border: 0.5px solid var(--icon);
-    color: var(--icon);
+    border: 0.5px solid var(--blue);
+    color: var(--blue);
 }
 
 #action-btn #remove:hover {
     background: transparent;
     border: 0.5px solid var(--error);
     color: var(--error);
+}
+/* User Cart Components Stylin6 */
+.all-products .product-list .user-cart img {
+    height: 160px;
+    width: 150px;
+    margin: 0;
 }

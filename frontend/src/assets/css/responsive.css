@@ -82,4 +82,9 @@
         height: 130px;
         margin: 0;
     }
+    .all-products .product-list .user-cart img {
+        height: 180px;
+        width: 100px;
+        margin: 0;
+    }
 }

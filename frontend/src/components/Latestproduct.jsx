@@ -4,7 +4,6 @@ import axios from "axios";
 import { getCurrency } from "../auth/Auth";
 
 const Latestproduct = () => {
-    document.title = "Latest Updated Products- Shopping Cart";
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
     const [products, setProducts] = useState([]);
