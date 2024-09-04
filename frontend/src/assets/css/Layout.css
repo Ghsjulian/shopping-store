@@ -25,11 +25,11 @@
     --text: #2e3c40;
     --white: #ffffff;
     --logo: #004ec4;
-    --side-bar: #ecf8f9;
+    --side-bar: #ffffff;
     --side-bar-h3: #007aa8;
     --side-bar-link: #2ed1ff;
     --side-bar-link-hover: #cbecee;
-    --side-bar-link-active: #a2cdd0;
+    --side-bar-link-active: #dfe8e9;
     --normal-shadow: 1px 1px 5px rgb(106, 106, 106),
         -1px 1px 5px rgb(145, 145, 145);
     --small-shadow: 2px 2px 2px #a7a5a5, -2px -2px 2px #c7c7c7;
@@ -170,8 +170,8 @@ aside .search-area {
     display: none;
     justify-content: space-between;
     align-items: center;
-    border: 0.5px solid var(--icon);
-    border-radius: 12px;
+    border: 1px solid var(--icon);
+    border-radius: 8px;
     padding: 0 0.7rem;
     margin: 0.5rem 0;
 }
@@ -179,8 +179,8 @@ aside .search-area input {
     outline: none;
     border: none;
     background: transparent;
-    padding: 0.5rem;
-    width: 60%;
+    padding: 0.6rem 0.5rem;
+    width: 100%;
     color: var(--icon);
 }
 aside .search-area i {
@@ -204,7 +204,7 @@ aside .links a {
     justify-content: left;
     font-family: ghs, "Sans-Serif";
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     transition: 0.3s ease-in;
     border-radius: 8px;
     padding: 0.5rem 0;
@@ -218,11 +218,12 @@ aside .links a i {
     color: var(--text);
     margin: auto 0.4rem;
     font-size: 18.5px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-aside .links a:hover {
-    background: var(--side-bar-link-hover);
+aside .links a span:hover {
+    color: var(--heading) !important;
+    transform: scale(1.1);
 }
 aside .links .active {
     background: var(--side-bar-link-active);

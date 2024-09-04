@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { getCurrency } from "../../auth/Auth";
+import {Loader} from "./Loader"
+
 
 const AllProducts = () => {
     document.title = "All Products List - Shopping Cart";
@@ -57,6 +59,8 @@ const AllProducts = () => {
     return (
         <section data-aos="zoom-in" id="view" className="page">
             <div className="all-products">
+                <Loader/>
+                {/*
                 {products.length > 0 ? (
                     <h2 className="heading">
                         Admin All Product List({products.length})
@@ -65,7 +69,7 @@ const AllProducts = () => {
                     <h2 className="heading">
                         No Product Added Yet({products.length})
                     </h2>
-                )}
+                )}                
                 {products.length > 0 &&
                     products.map((product, index) => {
                         return (
@@ -119,6 +123,7 @@ const AllProducts = () => {
                             </>
                         );
                     })}
+                */}
                 {/*
                 <div className="product-list">
                     <div id="cart-col" className="cart-col">

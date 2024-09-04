@@ -6,6 +6,7 @@
     --error-bg: rgba(221, 54, 10, 0.125);
     --success: #00ad18;
     --success-bg: rgba(25, 221, 10, 0.125);
+    --cart-loader: #d3d5d6;
 }
 .admin-col {
     padding: 2.5rem 1rem;
@@ -270,4 +271,10 @@ input:focus {
     height: 160px;
     width: 150px;
     margin: 0;
+}
+.cart-loader .img-loader {
+    width: 130px;
+    height: 150px;
+    background: var(--cart-loader);
+    border-radius: 5px;
 }

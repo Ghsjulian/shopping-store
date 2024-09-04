@@ -98,8 +98,8 @@ class productController {
         const id = req.params.id;
         const data = JSON.parse(req.body.data);
         var productImg = "";
-        const isImg = req.body.isImage === "YES" ? true : false;
-        const oldImg = "req.body.img";
+        const isImg = data.isImg ? true : false;
+        const oldImg = data.oldImg;
         const product_desc = data.product_desc;
         const product_category = data.product_category;
         const product_title = data.product_title;
