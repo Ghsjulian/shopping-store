@@ -277,4 +277,21 @@ input:focus {
     height: 150px;
     background: var(--cart-loader);
     border-radius: 5px;
+    animation: fetching 0.8s linear infinite;
+}
+.cart-loader .price-col span {
+    background: var(--cart-loader);
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    margin: 0.7rem 0;
+    animation: fetching 0.8s linear infinite;
+}
+.price-col #action-btn .button {
+    background: var(--cart-loader);
+    width: 80px;
+    height: 25px;
+    margin-right: 20px;
+    border-radius: 5px;
+    animation: fetching 0.8s linear infinite;
 }

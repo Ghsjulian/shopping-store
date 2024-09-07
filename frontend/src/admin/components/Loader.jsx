@@ -13,10 +13,8 @@ const Loader = () => {
                         <span></span>
                         <span></span>
                         <div id="action-btn">
-                            <button id="edit">
-                            </button>
-                            <button id="remove">
-                            </button>
+                            <div className="button"></div>
+                            <div className="button"></div>
                         </div>
                     </div>
                 </div>

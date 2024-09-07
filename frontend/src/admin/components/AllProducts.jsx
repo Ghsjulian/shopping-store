@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { getCurrency } from "../../auth/Auth";
-import {Loader} from "./Loader"
-
+import { Loader } from "./Loader";
 
 const AllProducts = () => {
     document.title = "All Products List - Shopping Cart";
@@ -11,7 +10,7 @@ const AllProducts = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [products, setProducts] = useState([]);
     const [isProducts, setIsProducts] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchProduct = async () => {
         try {
@@ -22,9 +21,11 @@ const AllProducts = () => {
                 setIsLoading(false);
             } else {
                 setIsProducts(false);
+                setIsLoading(false);
                 console.log("No Products Found");
             }
         } catch (error) {
+            setIsLoading(false);
             console.log(error);
         }
     };
@@ -33,7 +34,7 @@ const AllProducts = () => {
         if (isLoading) {
             return;
         }
-    }, [isLoading]);
+    }, []);
     const editProduct = id => {
         navigate(`/admin/edit-product/${id}`);
     };
@@ -59,8 +60,7 @@ const AllProducts = () => {
     return (
         <section data-aos="zoom-in" id="view" className="page">
             <div className="all-products">
-                <Loader/>
-                {/*
+                {isLoading && <Loader />}
                 {products.length > 0 ? (
                     <h2 className="heading">
                         Admin All Product List({products.length})
@@ -69,12 +69,15 @@ const AllProducts = () => {
                     <h2 className="heading">
                         No Product Added Yet({products.length})
                     </h2>
-                )}                
+                )}
                 {products.length > 0 &&
                     products.map((product, index) => {
                         return (
                             <>
-                                <div className="product-list" key={product._id+ 2}>
+                                <div
+                                    className="product-list"
+                                    key={product._id + 2}
+                                >
                                     <div id="cart-col" className="cart-col">
                                         <img
                                             src={product.product_img}
@@ -123,7 +126,7 @@ const AllProducts = () => {
                             </>
                         );
                     })}
-                */}
+
                 {/*
                 <div className="product-list">
                     <div id="cart-col" className="cart-col">

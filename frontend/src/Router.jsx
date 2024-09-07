@@ -6,9 +6,10 @@ import NotFound from "./components/404";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
-import Latestproduct from "./components/Latestproduct"
-import Cart from "./components/Cart"
+import Latestproduct from "./components/Latestproduct";
+import Cart from "./components/Cart";
 /* Import Admin Routes Here */
+import { AdminAuth } from "./admin/auth/AdminAuth";
 import Dashboard from "./admin/components/Dashboard";
 import AddProduct from "./admin/components/AddProduct";
 import EditProduct from "./admin/components/EditProduct";
@@ -23,9 +24,9 @@ const MyRoutes = [
                 element: <Home />
             },
             {
-        path: "/latest-product",
-        element: <Latestproduct />
-    },
+                path: "/latest-product",
+                element: <Latestproduct />
+            },
             {
                 path: "/profile",
                 element: <Profile />
@@ -37,19 +38,23 @@ const MyRoutes = [
             /*Admin Routes Here */
             {
                 path: "/admin/dashboard",
-                element: <Dashboard />
+                element: <AdminAuth><Dashboard /></AdminAuth>
             },
             {
                 path: "/admin/add-product",
-                element: <AddProduct />
+                element: <AdminAuth><AddProduct /></AdminAuth>
             },
             {
                 path: "/admin/edit-product/:id",
-                element: <EditProduct />
+                element: <AdminAuth><EditProduct /></AdminAuth>
             },
             {
                 path: "/admin/all-products",
-                element: <AllProducts />
+                element: (
+                    <AdminAuth>
+                        <AllProducts />
+                    </AdminAuth>
+                )
             }
         ]
     },
