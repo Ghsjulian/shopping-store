@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
+import { isAdmin, getInfo } from "../Cookies";
+import { useCart } from "../context/useCart";
 import { getCurrency } from "../auth/Auth";
 import ProductLoader from "./ProductLoader";
 
 const Latestproduct = () => {
+    const { dispatch, addCart, isCart } = useCart();
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
     const [products, setProducts] = useState([]);
@@ -66,13 +69,45 @@ const Latestproduct = () => {
                                         ></i>
                                         <span>View Product</span>
                                     </NavLink>
-                                    <NavLink to="#">
-                                        <i
-                                            className="bx 
- bxs-cart-add"
-                                        ></i>
-                                        <span> Add Cart</span>
-                                    </NavLink>
+
+                                    {!isAdmin() && isCart(product._id) == 0 && (
+                                        <NavLink
+                                            onClick={() => {
+                                                if (
+                                                    getInfo().id &&
+                                                    getInfo().token
+                                                ) {
+                                                    addCart(product,1);
+                                                } else {
+                                                    navigate("/login");
+                                                }
+                                            }}
+                                            to="#"
+                                        >
+                                            <i className="bx bxs-cart-add"></i>
+                                            <span>Add Cart</span>
+                                        </NavLink>
+                                    )}
+                                    {isCart(product._id).length > 0 && (
+                                        <NavLink
+                                            style={{
+                                                padding: ".1rem .5rem"
+                                            }}
+                                            to="/cart"
+                                        >
+                                            <i className="ri ri-checkbox-circle-line"></i>
+                                            <span>Added</span>
+                                        </NavLink>
+                                    )}
+
+                                    {isAdmin() && (
+                                        <NavLink
+                                            to={`/admin/edit-product/${product._id}`}
+                                        >
+                                            <i className="bx bx-pencil"></i>
+                                            <span>Edit Product</span>
+                                        </NavLink>
+                                    )}
                                 </div>
                             </div>
                         );

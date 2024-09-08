@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCookie, isAdmin } from "../../Cookies";
 
-const AdminAuth = () => {
+const AdminAuth = ({children}) => {
     const navigate = useNavigate();
     const cookie = getCookie("user");
     useEffect(() => {
