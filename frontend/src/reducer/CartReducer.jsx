@@ -15,7 +15,7 @@ const cartReducer = (state, action) => {
             state.cart.filter(item => {
                 if (item.id === id) {
                     item.quantity = quantity;
-                    item.price = item.current_price + price;
+                    item.price = parseInt(item.current_price) + parseInt(price);
                     localStorage.setItem("cart", JSON.stringify(state.cart));
                 }
             });
@@ -24,12 +24,20 @@ const cartReducer = (state, action) => {
             state.cart.filter(item => {
                 if (item.id === action.payload.id) {
                     item.quantity = action.payload.quantity;
-                    item.price = item.current_price - action.payload.price;
+                    item.price = parseInt(action.payload.price)-parseInt(item.current_price);
                     localStorage.setItem("cart", JSON.stringify(state.cart));
                 }
             });
             return { ...state, cart: [...state.cart] };
-
+        case "REMOVE_CART":
+            const filter = state.cart.filter(
+                item => item.id !== action.payload.id
+            );
+            localStorage.setItem("cart", JSON.stringify(filter));
+            return {
+                ...state,
+                cart: filter
+            };
         default:
             throw new Error();
     }

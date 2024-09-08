@@ -42,28 +42,50 @@ const CartProvider = ({ children }) => {
         return false;
     };
     const inCreaseQuantity = (id, price, quantity) => {
-        dispatch({
-            type: "SET_QUANTITY",
-            payload: {
-                id,
-                quantity: quantity + 1,
-                price
-            }
-        });
+        if (quantity == 5) {
+            return;
+        } else {
+            dispatch({
+                type: "SET_QUANTITY",
+                payload: {
+                    id,
+                    quantity: quantity + 1,
+                    price
+                }
+            });
+        }
     };
     const decraseQuantity = (id, price, quantity) => {
+        if (quantity == 1) {
+            return;
+        } else {
+            dispatch({
+                type: "DECREASE_QUANTITY",
+                payload: {
+                    id,
+                    quantity: quantity - 1,
+                    price
+                }
+            });
+        }
+    };
+    const removeCart = id => {
         dispatch({
-            type: "DECREASE_QUANTITY",
-            payload: {
-                id,
-                quantity: quantity - 1,
-                price
-            }
+            type: "REMOVE_CART",
+            payload: { id }
         });
     };
     return (
         <CartContext.Provider
-            value={{ ...state, dispatch, addCart, isCart, inCreaseQuantity,decraseQuantity }}
+            value={{
+                ...state,
+                dispatch,
+                addCart,
+                isCart,
+                inCreaseQuantity,
+                decraseQuantity,
+                removeCart
+            }}
         >
             {children}
         </CartContext.Provider>
