@@ -1,9 +1,7 @@
 <center>
-
-<center>
 <img align="center" src="frontend/public/favicons/android-chrome-192x192.png" width="250" height="250"><br>
-<h2 align="center">Ghs Julian</h2>
-</center>
+<h3>Web Developer And Designer </h3>
+<h2>Ghs Julian</h2>
 
 </center>
 
