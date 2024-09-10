@@ -87,4 +87,7 @@
         width: 100px;
         margin: 0;
     }
+    .view-product{
+        flex-direction: column;
+    }
 }

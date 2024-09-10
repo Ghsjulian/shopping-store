@@ -1,22 +1,21 @@
 import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../admin/styles/admin-layout.css";
 import { useCart } from "../context/useCart";
 import { getCurrency } from "../auth/Auth";
 
 const Cart = () => {
     const { cart, inCreaseQuantity, decraseQuantity, removeCart } = useCart();
+    const navigate = useNavigate()
+    const viewProduct = (id)=>{
+        navigate("/view-product/"+id)
+    }
     return (
         <section data-aos="zoom-in" id="view" className="page">
             <div className="all-products">
                 <h2 className="heading">Your Cart List </h2>
-                {
-                    cart.length == 0 && (
-                     <h3>No Product In Cart</h3>
-                     )
-                }
-                
-                
-                
+                {cart.length == 0 && <h3>No Product In Cart</h3>}
+
                 {cart.length > 0 &&
                     cart.map((item, index) => {
                         return (
@@ -60,9 +59,13 @@ const Cart = () => {
                                             </button>
                                         </div>
                                         <div id="action-btn">
-                                            <button id="edit">
-                                                <i className="bx bx-edit"></i>
-                                                Edit
+                                            <button 
+                                            onClick={(e)=>{
+                                                viewProduct(item._id)
+                                            }}
+                                            id="edit">
+                                                <i className="bx bxs-show"></i>
+                                                View
                                             </button>
                                             <button
                                                 onClick={e => {

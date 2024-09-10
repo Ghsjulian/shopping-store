@@ -8,6 +8,8 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Latestproduct from "./components/Latestproduct";
 import Cart from "./components/Cart";
+import ViewProduct from "./components/ViewProduct";
+
 /* Import Admin Routes Here */
 import { AdminAuth } from "./admin/auth/AdminAuth";
 import Dashboard from "./admin/components/Dashboard";
@@ -34,6 +36,10 @@ const MyRoutes = [
             {
                 path: "/cart",
                 element: <Cart />
+            },
+            {
+                path: "/view-product/:id",
+                element: <ViewProduct />
             },
             /*Admin Routes Here */
             {
