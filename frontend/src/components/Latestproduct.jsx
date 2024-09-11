@@ -77,7 +77,7 @@ const Latestproduct = () => {
                                                     getInfo().id &&
                                                     getInfo().token
                                                 ) {
-                                                    addCart(product,1);
+                                                    addCart(product, 1);
                                                 } else {
                                                     navigate("/login");
                                                 }
@@ -90,6 +90,7 @@ const Latestproduct = () => {
                                     )}
                                     {isCart(product._id).length > 0 && (
                                         <NavLink
+                                            
                                             style={{
                                                 padding: ".1rem .5rem"
                                             }}

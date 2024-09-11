@@ -6,10 +6,10 @@ import { getCurrency } from "../auth/Auth";
 
 const Cart = () => {
     const { cart, inCreaseQuantity, decraseQuantity, removeCart } = useCart();
-    const navigate = useNavigate()
-    const viewProduct = (id)=>{
-        navigate("/view-product/"+id)
-    }
+    const navigate = useNavigate();
+    const viewProduct = id => {
+        navigate("/view-product/" + id);
+    };
     return (
         <section data-aos="zoom-in" id="view" className="page">
             <div className="all-products">
@@ -50,7 +50,8 @@ const Cart = () => {
                                                 onClick={e => {
                                                     inCreaseQuantity(
                                                         item.id,
-                                                        item.price,
+                                                        item.main_price,
+                                                        item.main_price,
                                                         item.quantity
                                                     );
                                                 }}
@@ -59,11 +60,12 @@ const Cart = () => {
                                             </button>
                                         </div>
                                         <div id="action-btn">
-                                            <button 
-                                            onClick={(e)=>{
-                                                viewProduct(item._id)
-                                            }}
-                                            id="edit">
+                                            <button
+                                                onClick={e => {
+                                                    viewProduct(item._id);
+                                                }}
+                                                id="edit"
+                                            >
                                                 <i className="bx bxs-show"></i>
                                                 View
                                             </button>

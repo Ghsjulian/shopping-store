@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
         }
         return false;
     };
-    const inCreaseQuantity = (id, price, quantity) => {
+    const inCreaseQuantity = (id, main_price, price, quantity) => {
         if (quantity == 5) {
             return;
         } else {

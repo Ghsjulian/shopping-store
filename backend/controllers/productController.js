@@ -48,6 +48,24 @@ class productController {
             });
         }
     }
+    async categoryProduct(req, res) {
+        try {
+            const category = req.params.category;
+            const product = await Product.find({ product_category: category });
+            if (product) {
+                res.json(product);
+            } else {
+                throw new Error("No Product Found !");
+            }
+        } catch (error) {
+            res.status(404).json({
+                code: 404,
+                type: false,
+                status: "failed",
+                error: error.message
+            });
+        }
+    }
     async addProduct(req, res) {
         const data = JSON.parse(req.body.data);
         const productImg = req.file.filename;
