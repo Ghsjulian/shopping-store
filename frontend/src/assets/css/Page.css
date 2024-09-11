@@ -238,7 +238,6 @@
 
 .view-product {
     width: 97%;
-
     background: #fff;
     display: flex;
     justify-content: center;
@@ -288,6 +287,21 @@
     color: #fff;
     margin-right: 1.5rem;
 }
+
+.button-area a {
+    margin-right: 1rem;
+    outline: none;
+    background: transparent;
+    border: 1px solid #009ad1;
+    color: #009ad1;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
 .button-area button:hover {
     background: var(--btn);
     color: #fff;

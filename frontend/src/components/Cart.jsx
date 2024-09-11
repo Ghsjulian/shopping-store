@@ -29,18 +29,21 @@ const Cart = () => {
                                         <span>{item.title}</span>
                                         <span>
                                             Price :
-                                            {getCurrency("encode", item.price)}
+                                            {getCurrency(
+                                                "encode",
+                                                item.current_price
+                                            )}
                                         </span>
                                         <span>Quantity : {item.quantity}</span>
                                         <div id="action-btn">
                                             <button
                                                 id="btn"
                                                 onClick={e => {
-                                                    decraseQuantity(
-                                                        item.id,
-                                                        item.price,
-                                                        item.quantity
-                                                    );
+                                                        decraseQuantity(
+                                                            item.id,
+                                                            item.current_price,
+                                                            item.quantity
+                                                        );
                                                 }}
                                             >
                                                 -
@@ -50,8 +53,8 @@ const Cart = () => {
                                                 onClick={e => {
                                                     inCreaseQuantity(
                                                         item.id,
-                                                        item.main_price,
-                                                        item.main_price,
+                                                        item.fixed_price,
+                                                        item.current_price,
                                                         item.quantity
                                                     );
                                                 }}
@@ -81,6 +84,7 @@ const Cart = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <p>{JSON.stringify(item)}</p>
                             </div>
                         );
                     })}

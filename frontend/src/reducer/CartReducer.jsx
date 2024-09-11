@@ -11,12 +11,12 @@ const cartReducer = (state, action) => {
             );
             return { ...state, cart: [...state.cart, product] };
         case "SET_QUANTITY":
-            const { id, price, quantity } = action.payload;
+            const { id, current_price, quantity } = action.payload;
             state.cart.filter(item => {
                 if (item.id === id) {
                     item.quantity = quantity;
-                    item.price =
-                        parseInt(item.current_price) + parseInt(price);
+                    item.current_price =
+                        parseInt(current_price) + parseInt(item.fixed_price);
                     localStorage.setItem("cart", JSON.stringify(state.cart));
                 }
             });
@@ -24,11 +24,23 @@ const cartReducer = (state, action) => {
         case "DECREASE_QUANTITY":
             state.cart.filter(item => {
                 if (item.id === action.payload.id) {
-                    item.quantity = action.payload.quantity;
-                    item.price =
-                        parseInt(action.payload.price) -
-                        parseInt(item.current_price);
-                    localStorage.setItem("cart", JSON.stringify(state.cart));
+                    if (action.payload.quantity == 1) {
+                        item.quantity = action.payload.quantity;
+                        item.current_price =item.fixed_price;
+                        localStorage.setItem(
+                            "cart",
+                            JSON.stringify(state.cart)
+                        );
+                    } else {
+                        item.quantity = action.payload.quantity;
+                        item.current_price =
+                            parseInt(item.current_price) -
+                            parseInt(item.fixed_price);
+                        localStorage.setItem(
+                            "cart",
+                            JSON.stringify(state.cart)
+                        );
+                    }
                 }
             });
             return { ...state, cart: [...state.cart] };

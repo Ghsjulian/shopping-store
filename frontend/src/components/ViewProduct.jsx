@@ -29,7 +29,7 @@ const ViewProduct = () => {
             product.product_desc.price =
                 parseInt(price) - parseInt(currentPrice);
         }
-        product.main_price = currentPrice;
+        product.fixed_price = currentPrice;
     };
     useEffect(() => {
         const fetchProduct = async () => {

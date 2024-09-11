@@ -22,8 +22,8 @@ const CartProvider = ({ children }) => {
         const cartProduct = {
             id: product._id,
             title: product.product_title,
-            price,
-            current_price: price,
+            fixed_price: product.fixed_price,
+            current_price: product.product_desc.price,
             quantity,
             img: product.product_img
         };
@@ -41,7 +41,7 @@ const CartProvider = ({ children }) => {
         }
         return false;
     };
-    const inCreaseQuantity = (id, main_price, price, quantity) => {
+    const inCreaseQuantity = (id, fixed_price, current_price, quantity) => {
         if (quantity == 5) {
             return;
         } else {
@@ -50,7 +50,7 @@ const CartProvider = ({ children }) => {
                 payload: {
                     id,
                     quantity: quantity + 1,
-                    price
+                    current_price
                 }
             });
         }
